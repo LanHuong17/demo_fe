@@ -1,16 +1,18 @@
 <div class="register-container">
   <div class="register-card">
-    <h2>Đăng ký tài khoản</h2>
+    <!-- Form Đăng ký -->
+    <div *ngIf="!isRegistrationSuccess">
+      <h2>Đăng ký tài khoản</h2>
 
-    <div *ngIf="successMessage" class="alert alert-success">
-      {{ successMessage }}
-    </div>
+      <div *ngIf="successMessage" class="alert alert-success">
+        {{ successMessage }}
+      </div>
 
-    <div *ngIf="errorMessage" class="alert alert-error">
-      {{ errorMessage }}
-    </div>
+      <div *ngIf="errorMessage" class="alert alert-error">
+        {{ errorMessage }}
+      </div>
 
-    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="username">Tên đăng nhập:</label>
         <input
@@ -74,5 +76,40 @@
         </button>
       </div>
     </form>
+    </div>
+
+    <!-- Giao diện hiển thị thông tin sau khi đăng ký thành công -->
+    <div *ngIf="isRegistrationSuccess && registeredUser" class="success-info-container">
+      <div class="success-header">
+        <h2>✓ Đăng ký thành công</h2>
+      </div>
+
+      <div class="user-info">
+        <div class="info-card">
+          <h3>Thông tin tài khoản của bạn</h3>
+          
+          <div class="info-item">
+            <label>ID:</label>
+            <span class="info-value">{{ registeredUser.id }}</span>
+          </div>
+
+          <div class="info-item">
+            <label>Tên đăng nhập:</label>
+            <span class="info-value">{{ registeredUser.username }}</span>
+          </div>
+
+          <div class="info-item">
+            <label>Email:</label>
+            <span class="info-value">{{ registeredUser.email }}</span>
+          </div>
+
+          <div class="action-buttons">
+            <button type="button" class="btn btn-primary" (click)="registerAgain()">
+              Đăng ký tài khoản khác
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

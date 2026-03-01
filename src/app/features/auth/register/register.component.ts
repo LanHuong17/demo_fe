@@ -17,6 +17,8 @@ export class RegisterComponent {
   submitted = false;
   successMessage = '';
   errorMessage = '';
+  isRegistrationSuccess = false;
+  registeredUser: any = null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -53,7 +55,9 @@ export class RegisterComponent {
     this.userService.register(registrationRequest).subscribe({
       next: (response) => {
         this.loading = false;
-        this.successMessage = `Đăng ký thành công! ID: ${response.id}`;
+        this.successMessage = `Đăng ký thành công!`;
+        this.registeredUser = response;
+        this.isRegistrationSuccess = true;
         this.registrationForm.reset();
         this.submitted = false;
       },
@@ -69,5 +73,11 @@ export class RegisterComponent {
     this.submitted = false;
     this.successMessage = '';
     this.errorMessage = '';
+  }
+
+  registerAgain(): void {
+    this.isRegistrationSuccess = false;
+    this.registeredUser = null;
+    this.resetForm();
   }
 }
