@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # DemoFe
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.22.
@@ -57,3 +58,6 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+=======
+# demo_fe
+>>>>>>> da254de527140fd5bf4738156ddb74ab95d15eef
